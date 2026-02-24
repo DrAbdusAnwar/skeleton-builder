@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#game-board {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    border: 2px solid #00FFFF;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border-radius: 10px;
+    background-color: #222;
+}
+
+#bone-yard, #drop-zone {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#bone-yard {
+    border-right: 1px solid #444;
+    gap: 15px;
+}
+
+#drop-zone {
+    background-image: radial-gradient(circle, #333 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.bone {
+    width: 80%;
+    padding: 15px;
+    background-color: #333;
+    border: 1px solid #00FFFF;
+    border-radius: 5px;
+    text-align: center;
+    cursor: grab;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+.bone:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+}
+
+/* Faint outline of a human body */
+.outline-head, .outline-torso, .outline-arms, .outline-legs {
+    border: 2px dashed rgba(0, 255, 255, 0.2);
+    position: absolute;
+    border-radius: 50%; /* Default for head */
+}
+
+.outline-head {
+    width: 80px;
+    height: 80px;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.outline-torso {
+    width: 60px;
+    height: 150px;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+.outline-arms {
+    width: 200px;
+    height: 10px;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+.outline-legs {
+    width: 100px;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    border: none; /* Reset for custom shape */
+}
+
+.outline-legs::before, .outline-legs::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 150px;
+    border: 2px dashed rgba(0, 255, 255, 0.2);
+    border-radius: 5px;
+    top: 0;
+}
+
+.outline-legs::before {
+    left: 10px;
+    transform: rotate(10deg);
+}
+
+.outline-legs::after {
+    right: 10px;
+    transform: rotate(-10deg);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #game-board {
+        flex-direction: column-reverse; /* Bone Yard at bottom */
+        height: 95vh;
+        width: 95%;
+    }
+
+    #bone-yard {
+        border-right: none;
+        border-top: 1px solid #444;
+        flex-direction: row; /* Horizontal scrolling or wrapping on mobile */
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        flex: 0 0 auto; /* Don't grow too much */
+        padding: 10px;
+    }
+
+    .bone {
+        width: 40%; /* 2 per row */
+        margin: 5px;
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    #drop-zone {
+        flex: 1 1 auto;
+    }
+
+    /* Adjust outline sizes for mobile */
+    .outline-head {
+        width: 60px;
+        height: 60px;
+        top: 5%;
+    }
+
+    .outline-torso {
+        width: 50px;
+        height: 120px;
+        top: 18%;
+    }
+
+    .outline-arms {
+        width: 160px;
+        top: 22%;
+    }
+
+    .outline-legs {
+        top: 40%;
+    }
+}
