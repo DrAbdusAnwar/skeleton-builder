@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -35,7 +39,7 @@ body {
     justify-content: flex-start;
     overflow-y: auto;
     border-right: 1px solid #444;
-    gap: 15px;
+    gap: 5px;
 }
 
 #drop-zone {
@@ -48,8 +52,8 @@ body {
 }
 
 .draggable-bone {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     padding: 10px;
     cursor: grab;
     transition: transform 0.2s;
@@ -118,10 +122,19 @@ body {
     z-index: 1; /* Below arms? */
 }
 
-#outline-arms {
+#outline-left-arm {
     top: 18%;
-    width: 240px;
+    width: 80px;
     height: 120px;
+    left: calc(50% - 100px);
+    z-index: 2;
+}
+
+#outline-right-arm {
+    top: 18%;
+    width: 80px;
+    height: 120px;
+    left: calc(50% + 100px);
     z-index: 2;
 }
 
@@ -181,10 +194,18 @@ body {
         height: 100px;
     }
 
-    #outline-arms {
+    #outline-left-arm {
         top: 15%;
-        width: 180px;
+        width: 60px;
         height: 100px;
+        left: calc(50% - 80px);
+    }
+
+    #outline-right-arm {
+        top: 15%;
+        width: 60px;
+        height: 100px;
+        left: calc(50% + 80px);
     }
 
     #outline-pelvis {

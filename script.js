@@ -112,7 +112,18 @@ function isMatch(bone, outline) {
     if (!bone || !outline) return false;
     const bonePart = bone.id.replace('bone-', '');
     const outlinePart = outline.id.replace('outline-', '');
-    return bonePart === outlinePart;
+
+    // Enforce strict matching: The bone part must exactly match the outline part.
+    // e.g., 'left-arm' matches 'left-arm', but not 'right-arm'.
+    const match = bonePart === outlinePart;
+
+    if (!match) {
+        console.log(`Mismatch: ${bone.id} cannot be dropped on ${outline.id} - Snap back enforced.`);
+    } else {
+        console.log(`Match: ${bone.id} dropped on ${outline.id}`);
+    }
+
+    return match;
 }
 
 function snapToTarget(bone, outline) {
