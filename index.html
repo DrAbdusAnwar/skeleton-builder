@@ -9,17 +9,58 @@
 <body>
     <div id="game-board">
         <div id="bone-yard">
-            <div class="bone" id="skull">Skull</div>
-            <div class="bone" id="ribcage">Ribcage</div>
-            <div class="bone" id="pelvis">Pelvis</div>
-            <div class="bone" id="arms">Arms</div>
-            <div class="bone" id="legs">Legs</div>
+            <div class="draggable-bone" id="bone-skull">
+                <svg viewBox="0 0 100 100" class="bone-svg">
+                    <path d="M50 10 A25 25 0 1 1 50 60 A25 25 0 1 1 50 10 Z M35 60 L35 80 L65 80 L65 60 Z M40 35 H45 V40 H40 Z M55 35 H60 V40 H55 Z" />
+                </svg>
+            </div>
+            <div class="draggable-bone" id="bone-ribcage">
+                <svg viewBox="0 0 100 100" class="bone-svg">
+                    <path d="M50 10 V90 M30 30 Q50 40 70 30 M30 50 Q50 60 70 50 M30 70 Q50 80 70 70" />
+                </svg>
+            </div>
+            <div class="draggable-bone" id="bone-pelvis">
+                <svg viewBox="0 0 100 100" class="bone-svg">
+                    <path d="M20 20 Q50 40 80 20 L70 60 L50 80 L30 60 Z M35 40 A5 5 0 1 0 35 50 A5 5 0 1 0 35 40 M65 40 A5 5 0 1 0 65 50 A5 5 0 1 0 65 40" />
+                </svg>
+            </div>
+            <div class="draggable-bone" id="bone-arms">
+                <svg viewBox="0 0 100 100" class="bone-svg">
+                    <path d="M10 20 L30 50 L10 80 M90 20 L70 50 L90 80 M10 20 L90 20" />
+                </svg>
+            </div>
+            <div class="draggable-bone" id="bone-legs">
+                <svg viewBox="0 0 100 100" class="bone-svg">
+                    <path d="M35 10 L30 50 L30 90 M65 10 L70 50 L70 90 M20 90 H40 M60 90 H80" />
+                </svg>
+            </div>
         </div>
         <div id="drop-zone">
-            <div class="outline-head"></div>
-            <div class="outline-torso"></div>
-            <div class="outline-arms"></div>
-            <div class="outline-legs"></div>
+            <div class="bone-outline" id="outline-skull">
+                <svg viewBox="0 0 100 100" class="bone-svg faint-outline">
+                    <path d="M50 10 A25 25 0 1 1 50 60 A25 25 0 1 1 50 10 Z M35 60 L35 80 L65 80 L65 60 Z M40 35 H45 V40 H40 Z M55 35 H60 V40 H55 Z" />
+                </svg>
+            </div>
+            <div class="bone-outline" id="outline-ribcage">
+                <svg viewBox="0 0 100 100" class="bone-svg faint-outline">
+                    <path d="M50 10 V90 M30 30 Q50 40 70 30 M30 50 Q50 60 70 50 M30 70 Q50 80 70 70" />
+                </svg>
+            </div>
+            <div class="bone-outline" id="outline-pelvis">
+                <svg viewBox="0 0 100 100" class="bone-svg faint-outline">
+                    <path d="M20 20 Q50 40 80 20 L70 60 L50 80 L30 60 Z M35 40 A5 5 0 1 0 35 50 A5 5 0 1 0 35 40 M65 40 A5 5 0 1 0 65 50 A5 5 0 1 0 65 40" />
+                </svg>
+            </div>
+            <div class="bone-outline" id="outline-arms">
+                <svg viewBox="0 0 100 100" class="bone-svg faint-outline">
+                    <path d="M10 20 L30 50 L10 80 M90 20 L70 50 L90 80 M10 20 L90 20" />
+                </svg>
+            </div>
+            <div class="bone-outline" id="outline-legs">
+                <svg viewBox="0 0 100 100" class="bone-svg faint-outline">
+                    <path d="M35 10 L30 50 L30 90 M65 10 L70 50 L70 90 M20 90 H40 M60 90 H80" />
+                </svg>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
