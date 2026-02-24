@@ -1,7 +1,7 @@
 console.log("Skeleton Builder app initialized");
 
 document.addEventListener('DOMContentLoaded', () => {
-    const bones = document.querySelectorAll('.bone');
+    const bones = document.querySelectorAll('.draggable-bone');
     const dropZone = document.getElementById('drop-zone');
 
     // Future functionality: Drag and drop logic will go here
