@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="game-timer">00:00</div>
     <div id="game-board">
         <div id="bone-yard">
             <div class="draggable-bone" id="bone-skull">
@@ -75,5 +76,15 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script src="script.js"></script>
+
+    <!-- Victory Modal -->
+    <div id="victory-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Skeleton Complete!</h2>
+            <p>Time: <span id="final-time">00:00</span></p>
+            <p>Personal Best: <span id="best-time">--:--</span></p>
+            <button id="play-again-btn">Play Again</button>
+        </div>
+    </div>
 </body>
 </html>
