@@ -296,3 +296,33 @@ body {
         height: 160px;
     }
 }
+/* Desktop Responsiveness */
+@media (min-width: 768px) {
+    #game-board {
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    #bone-yard {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        gap: 20px;
+        overflow-y: visible;
+        min-height: 600px;
+    }
+
+    #drop-zone {
+        position: relative;
+        min-height: 600px;
+    }
+
+    /* Fixed anatomical positioning for desktop */
+    #outline-skull { top: calc(50% - 280px); }
+    #outline-ribcage { top: calc(50% - 190px); }
+    #outline-left-arm { top: calc(50% - 190px); }
+    #outline-right-arm { top: calc(50% - 190px); }
+    #outline-pelvis { top: calc(50% - 60px); }
+    #outline-legs { top: calc(50% + 30px); }
+}
