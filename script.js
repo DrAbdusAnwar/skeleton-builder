@@ -1,5 +1,10 @@
 console.log("Skeleton Builder app initialized");
 
+let startTime;
+let timerInterval;
+let successfulDrops = 0;
+let isGameActive = false;
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Draggable Bones
     interact('.draggable-bone').draggable({
@@ -44,6 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Initialize Play Again Button
+    const playAgainBtn = document.getElementById('play-again-btn');
+    if (playAgainBtn) {
+        playAgainBtn.addEventListener('click', resetGame);
+    }
 });
 
 function dragStartListener(event) {
@@ -51,6 +62,11 @@ function dragStartListener(event) {
 
     // Prevent interaction if already placed (double safety)
     if (target.classList.contains('placed-bone')) return;
+
+    // Start Timer on first interaction
+    if (!isGameActive && successfulDrops < 6) {
+        startTimer();
+    }
 
     // Create a placeholder to maintain layout in the bone yard
     const rect = target.getBoundingClientRect();
@@ -155,8 +171,14 @@ function snapToTarget(bone, outline) {
     bone.removeAttribute('data-y');
     bone.removeAttribute('data-placeholder-id');
 
-    // Disable dragging for this bone
-    interact(bone).unset();
+    // NOTE: Removed interact(bone).unset() to allow easier resetting.
+    // The .placed-bone class and check in dragStartListener handles disabling interaction.
+
+    // Check Win Condition
+    successfulDrops++;
+    if (successfulDrops === 6) {
+        winGame();
+    }
 }
 
 function revertBone(bone) {
@@ -181,4 +203,109 @@ function revertBone(bone) {
         bone.removeAttribute('data-y');
         bone.removeAttribute('data-placeholder-id');
     }
+}
+
+// --- Timer & Game Logic ---
+
+function startTimer() {
+    if (isGameActive) return;
+    isGameActive = true;
+    startTime = Date.now();
+    // Clear any existing interval just in case
+    clearInterval(timerInterval);
+    timerInterval = setInterval(updateTimer, 100);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    isGameActive = false;
+}
+
+function updateTimer() {
+    const elapsedTime = Date.now() - startTime;
+    const timerDisplay = document.getElementById('game-timer');
+    if (timerDisplay) {
+        timerDisplay.textContent = formatTime(elapsedTime);
+    }
+}
+
+function formatTime(ms) {
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function winGame() {
+    stopTimer();
+    const finalTimeMs = Date.now() - startTime;
+    const finalTimeString = formatTime(finalTimeMs);
+
+    // Save High Score
+    const savedBest = localStorage.getItem('skeletonBuilderBestTime');
+    let bestTimeMs = savedBest ? parseInt(savedBest) : Infinity;
+
+    if (finalTimeMs < bestTimeMs) {
+        bestTimeMs = finalTimeMs;
+        localStorage.setItem('skeletonBuilderBestTime', bestTimeMs);
+    }
+
+    // Update Modal
+    document.getElementById('final-time').textContent = finalTimeString;
+    document.getElementById('best-time').textContent = formatTime(bestTimeMs);
+
+    // Show Modal
+    const modal = document.getElementById('victory-modal');
+    modal.style.display = 'flex';
+    // Small delay to allow display:flex to apply before adding visible class for transition
+    setTimeout(() => {
+        modal.classList.add('visible');
+    }, 10);
+}
+
+function resetGame() {
+    stopTimer();
+    successfulDrops = 0;
+    isGameActive = false;
+    document.getElementById('game-timer').textContent = '00:00';
+
+    // Hide Modal
+    const modal = document.getElementById('victory-modal');
+    modal.classList.remove('visible');
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 500); // Wait for transition
+
+    // Reset Bones
+    const boneYard = document.getElementById('bone-yard');
+    // Ensure we preserve the original order: skull, ribcage, pelvis, left-arm, right-arm, legs
+    const order = ['bone-skull', 'bone-ribcage', 'bone-pelvis', 'bone-left-arm', 'bone-right-arm', 'bone-legs'];
+
+    order.forEach(id => {
+        const bone = document.getElementById(id);
+        if (bone) {
+            // Remove placed class
+            bone.classList.remove('placed-bone');
+
+            // Reset styles
+            bone.style.position = '';
+            bone.style.left = '';
+            bone.style.top = '';
+            bone.style.width = '';
+            bone.style.height = '';
+            bone.style.margin = '';
+            bone.style.transform = '';
+            bone.style.zIndex = '';
+
+            // Remove data attributes
+            bone.removeAttribute('data-x');
+            bone.removeAttribute('data-y');
+            bone.removeAttribute('data-placeholder-id');
+
+            // Move back to bone yard if not already there
+            if (bone.parentNode !== boneYard) {
+                boneYard.appendChild(bone);
+            }
+        }
+    });
 }
