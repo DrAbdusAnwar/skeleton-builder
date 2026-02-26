@@ -79,18 +79,26 @@ body {
 .bone-svg {
     width: 100%;
     height: 100%;
-    fill: transparent;
-    stroke: #00FFFF;
-    stroke-width: 2;
+    stroke-width: 1;
     stroke-linecap: round;
     stroke-linejoin: round;
-    filter: drop-shadow(0 0 5px #00FFFF);
+}
+
+.draggable-bone .bone-svg {
+    fill: url(#bone-gradient);
+    stroke: #c4bba0;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.draggable-bone:hover .bone-svg {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
 }
 
 .faint-outline {
-    stroke: rgba(0, 255, 255, 0.2);
-    stroke-dasharray: 5, 5;
-    filter: none;
+    fill: rgba(255, 255, 255, 0.05) !important;
+    stroke: rgba(255, 255, 255, 0.2) !important;
+    stroke-dasharray: 4, 2;
+    filter: none !important;
 }
 
 .bone-outline {
@@ -104,8 +112,9 @@ body {
 }
 
 .drop-target-active .bone-svg {
-    stroke: #00FF00;
-    filter: drop-shadow(0 0 10px #00FF00);
+    stroke: #00FF00 !important;
+    filter: drop-shadow(0 0 10px #00FF00) !important;
+    fill: rgba(0, 255, 0, 0.1) !important;
 }
 
 .placed-bone {
