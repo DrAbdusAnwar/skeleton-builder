@@ -129,46 +129,12 @@ body {
     pointer-events: none; /* Lock interaction */
 }
 
-#outline-skull {
-    top: 5%;
-    width: 80px;
-    height: 80px;
-}
-
-#outline-ribcage {
-    top: 18%;
-    width: 100px;
-    height: 120px;
-    z-index: 1; /* Below arms? */
-}
-
-#outline-left-arm {
-    top: 18%;
-    width: 80px;
-    height: 120px;
-    left: calc(50% - 100px);
-    z-index: 2;
-}
-
-#outline-right-arm {
-    top: 18%;
-    width: 80px;
-    height: 120px;
-    left: calc(50% + 100px);
-    z-index: 2;
-}
-
-#outline-pelvis {
-    top: 42%;
-    width: 100px;
-    height: 80px;
-}
-
-#outline-legs {
-    top: 55%;
-    width: 160px;
-    height: 200px;
-}
+#outline-skull { top: calc(50% - 112px); left: calc(50% - 17.5px); width: 35px; height: 45px; }
+#outline-ribcage { top: calc(50% - 69px); left: calc(50% - 17.5px); width: 35px; height: 45px; z-index: 1; }
+#outline-left-arm { top: calc(50% - 69px); left: calc(50% - 33px); width: 15.5px; height: 45px; z-index: 2; }
+#outline-right-arm { top: calc(50% - 69px); left: calc(50% + 17.5px); width: 15.5px; height: 45px; z-index: 2; }
+#outline-pelvis { top: calc(50% - 25.5px); left: calc(50% - 22.5px); width: 45px; height: 32.5px; }
+#outline-legs { top: calc(50% + 3.5px); left: calc(50% - 23.75px); width: 47.5px; height: 85px; }
 
 /* Victory Modal */
 .modal {
@@ -266,44 +232,6 @@ body {
         flex: 1 1 auto;
     }
 
-    /* Adjust outline sizes for mobile */
-    #outline-skull {
-        top: 2%;
-        width: 60px;
-        height: 60px;
-    }
-
-    #outline-ribcage {
-        top: 15%;
-        width: 80px;
-        height: 100px;
-    }
-
-    #outline-left-arm {
-        top: 15%;
-        width: 60px;
-        height: 100px;
-        left: calc(50% - 80px);
-    }
-
-    #outline-right-arm {
-        top: 15%;
-        width: 60px;
-        height: 100px;
-        left: calc(50% + 80px);
-    }
-
-    #outline-pelvis {
-        top: 38%;
-        width: 80px;
-        height: 60px;
-    }
-
-    #outline-legs {
-        top: 50%;
-        width: 120px;
-        height: 160px;
-    }
 }
 /* Desktop Responsiveness */
 @media (min-width: 768px) {
@@ -328,10 +256,10 @@ body {
     }
 
     /* Fixed anatomical positioning for desktop */
-    #outline-skull { top: calc(50% - 280px); }
-    #outline-ribcage { top: calc(50% - 190px); }
-    #outline-left-arm { top: calc(50% - 190px); }
-    #outline-right-arm { top: calc(50% - 190px); }
-    #outline-pelvis { top: calc(50% - 60px); }
-    #outline-legs { top: calc(50% + 30px); }
+    #outline-skull { top: calc(50% - 225px); left: calc(50% - 35px); width: 70px; height: 90px; }
+    #outline-ribcage { top: calc(50% - 138px); left: calc(50% - 35px); width: 70px; height: 90px; }
+    #outline-left-arm { top: calc(50% - 138px); left: calc(50% - 66px); width: 31px; height: 90px; }
+    #outline-right-arm { top: calc(50% - 138px); left: calc(50% + 35px); width: 31px; height: 90px; }
+    #outline-pelvis { top: calc(50% - 51px); left: calc(50% - 45px); width: 90px; height: 65px; }
+    #outline-legs { top: calc(50% + 7px); left: calc(50% - 47.5px); width: 95px; height: 170px; }
 }
