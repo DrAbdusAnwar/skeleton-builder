@@ -5,6 +5,69 @@ let timerInterval;
 let successfulDrops = 0;
 let isGameActive = false;
 
+// Audio Context
+let audioCtx;
+
+function initAudio() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+}
+
+function playSnapSound() {
+    initAudio();
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    // Short, punchy clack sound
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.05);
+
+    gainNode.gain.setValueAtTime(0.8, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    osc.start(audioCtx.currentTime);
+    osc.stop(audioCtx.currentTime + 0.1);
+}
+
+function playWinSound() {
+    initAudio();
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+
+    const notes = [440, 554.37, 659.25, 880]; // A4, C#5, E5, A5 arpeggio
+    const noteDuration = 0.1;
+
+    notes.forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+
+        const time = audioCtx.currentTime + i * noteDuration;
+
+        gainNode.gain.setValueAtTime(0, time);
+        gainNode.gain.linearRampToValueAtTime(0.3, time + 0.02);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, time + noteDuration);
+
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        osc.start(time);
+        osc.stop(time + noteDuration);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Draggable Bones
     interact('.draggable-bone').draggable({
@@ -46,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isMatch(bone, outline)) {
                 snapToTarget(bone, outline);
                 outline.classList.remove('drop-target-active');
+                playSnapSound();
             }
         }
     });
@@ -238,6 +302,7 @@ function formatTime(ms) {
 
 function winGame() {
     stopTimer();
+    playWinSound();
     const finalTimeMs = startTime ? Date.now() - startTime : 0;
     const finalTimeString = formatTime(finalTimeMs);
 
