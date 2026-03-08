@@ -223,20 +223,37 @@ body {
         flex-wrap: wrap;
         justify-content: space-around;
         align-items: center;
-        flex: 0 0 auto; /* Don't grow too much */
+        flex: 0 0 35%; /* Take up 35% of the screen height */
+        height: 35%;
+        overflow-y: auto;
         padding: 10px;
     }
 
     .draggable-bone {
-        width: 60px; /* Smaller on mobile */
-        height: 60px;
+        width: 80px; /* Preserve original size on mobile */
+        height: 80px;
         margin: 5px;
         padding: 5px;
     }
 
     #drop-zone {
-        flex: 1 1 auto;
+        flex: 0 0 65%; /* Take up 65% of the screen height */
+        height: 65%;
+        overflow: hidden;
     }
+
+    #outline-skull { top: calc(50% - 212.5px); left: calc(50% - 35px); width: 70px; height: 75px; }
+    #outline-jaw { top: calc(50% - 137.5px); left: calc(50% - 30px); width: 60px; height: 20px; }
+    #outline-left-clavicle { top: calc(50% - 112.5px); left: calc(50% - 50px); width: 50px; height: 20px; z-index: 2; }
+    #outline-right-clavicle { top: calc(50% - 112.5px); left: calc(50% - 0px); width: 50px; height: 20px; z-index: 2; }
+    #outline-ribcage { top: calc(50% - 102.5px); left: calc(50% - 35px); width: 70px; height: 90px; z-index: 1; }
+    #outline-left-arm { top: calc(50% - 102.5px); left: calc(50% - 70px); width: 35px; height: 90px; z-index: 2; }
+    #outline-right-arm { top: calc(50% - 102.5px); left: calc(50% + 35px); width: 35px; height: 90px; z-index: 2; }
+    #outline-pelvis { top: calc(50% - 12.5px); left: calc(50% - 45px); width: 90px; height: 65px; }
+    #outline-left-thigh { top: calc(50% + 42.5px); left: calc(50% - 50px); width: 40px; height: 70px; }
+    #outline-right-thigh { top: calc(50% + 42.5px); left: calc(50% + 10px); width: 40px; height: 70px; }
+    #outline-left-lower-leg { top: calc(50% + 112.5px); left: calc(50% - 50px); width: 40px; height: 100px; }
+    #outline-right-lower-leg { top: calc(50% + 112.5px); left: calc(50% + 10px); width: 40px; height: 100px; }
 
 }
 /* Desktop Responsiveness */
