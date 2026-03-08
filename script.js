@@ -64,7 +64,7 @@ function dragStartListener(event) {
     if (target.classList.contains('placed-bone')) return;
 
     // Start Timer on first interaction
-    if (!isGameActive && successfulDrops < 6) {
+    if (!isGameActive && successfulDrops < 12) {
         startTimer();
     }
 
@@ -176,7 +176,7 @@ function snapToTarget(bone, outline) {
 
     // Check Win Condition
     successfulDrops++;
-    if (successfulDrops === 6) {
+    if (successfulDrops === 12) {
         winGame();
     }
 }
@@ -238,7 +238,7 @@ function formatTime(ms) {
 
 function winGame() {
     stopTimer();
-    const finalTimeMs = Date.now() - startTime;
+    const finalTimeMs = startTime ? Date.now() - startTime : 0;
     const finalTimeString = formatTime(finalTimeMs);
 
     // Save High Score
@@ -278,8 +278,12 @@ function resetGame() {
 
     // Reset Bones
     const boneYard = document.getElementById('bone-yard');
-    // Ensure we preserve the original order: skull, ribcage, pelvis, left-arm, right-arm, legs
-    const order = ['bone-skull', 'bone-ribcage', 'bone-pelvis', 'bone-left-arm', 'bone-right-arm', 'bone-legs'];
+    // Ensure we preserve the original order
+    const order = [
+        'bone-skull', 'bone-jaw', 'bone-left-clavicle', 'bone-right-clavicle',
+        'bone-ribcage', 'bone-pelvis', 'bone-left-arm', 'bone-right-arm',
+        'bone-left-thigh', 'bone-right-thigh', 'bone-left-lower-leg', 'bone-right-lower-leg'
+    ];
 
     order.forEach(id => {
         const bone = document.getElementById(id);

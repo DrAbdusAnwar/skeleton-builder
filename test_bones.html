@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+svg { width: 100px; height: 100px; border: 1px solid red; margin: 5px; }
+path { fill: #ccc; stroke: #333; }
+.board { position: relative; width: 400px; height: 800px; border: 1px solid black; }
+.board svg { position: absolute; border: none; margin: 0; }
+</style>
+</head>
+<body>
+<div style="display: flex; flex-wrap: wrap;">
+<div style="text-align: center;"><div>skull</div><svg viewBox="15 5 70 75"><path fill-rule="evenodd" d="M50 5 C30 5 15 25 15 45 C15 65 25 75 35 80 L65 80 C75 75 85 65 85 45 C85 25 70 5 50 5 Z M30 40 A8 8 0 1 0 30 56 A8 8 0 1 0 30 40 Z M70 40 A8 8 0 1 0 70 56 A8 8 0 1 0 70 40 Z M50 60 L45 70 H55 Z" /></svg></div>
+<div style="text-align: center;"><div>jaw</div><svg viewBox="35 80 30 20"><path d="M35 80 C40 85 60 85 65 80 L65 95 C60 100 40 100 35 95 Z" /></svg></div>
+<div style="text-align: center;"><div>left-clavicle</div><svg viewBox="0 0 50 20"><path d="M45 10 C30 5 15 15 5 10 C15 5 30 0 45 5 Z" /></svg></div>
+<div style="text-align: center;"><div>right-clavicle</div><svg viewBox="50 0 50 20"><path d="M55 10 C70 5 85 15 95 10 C85 5 70 0 55 5 Z" /></svg></div>
+<div style="text-align: center;"><div>ribcage</div><svg viewBox="15 10 70 90"><path d="M45 10 H55 V100 H45 Z M45 20 C20 15 15 35 45 40 V35 C20 30 25 20 45 25 Z M55 20 C80 15 85 35 55 40 V35 C80 30 75 20 55 25 Z M45 45 C20 40 15 60 45 65 V60 C20 55 25 45 45 50 Z M55 45 C80 40 85 60 55 65 V60 C80 55 75 45 55 50 Z M45 70 C20 65 15 85 45 90 V85 C20 80 25 70 45 75 Z M55 70 C80 65 85 85 55 90 V85 C80 80 75 70 55 75 Z" /></svg></div>
+<div style="text-align: center;"><div>pelvis</div><svg viewBox="5 10 90 65"><path fill-rule="evenodd" d="M10 10 Q50 30 90 10 Q100 40 80 55 L65 75 L50 60 L35 75 L20 55 Q0 40 10 10 Z M25 45 A5 5 0 1 0 25 55 A5 5 0 1 0 25 45 Z M75 45 A5 5 0 1 0 75 55 A5 5 0 1 0 75 45 Z" /></svg></div>
+<div style="text-align: center;"><div>left-arm</div><svg viewBox="40 10 35 90"><path d="M60 10 C70 10 75 20 65 30 L50 60 L50 100 L40 100 L40 60 L55 30 C45 20 50 10 60 10 Z" /></svg></div>
+<div style="text-align: center;"><div>right-arm</div><svg viewBox="25 10 35 90"><path d="M40 10 C30 10 25 20 35 30 L50 60 L50 100 L60 100 L60 60 L45 30 C55 20 50 10 40 10 Z" /></svg></div>
+<div style="text-align: center;"><div>left-thigh</div><svg viewBox="30 10 40 70"><path d="M50 10 C60 10 65 20 60 30 L50 80 L40 80 L40 30 C35 20 40 10 50 10 Z" /></svg></div>
+<div style="text-align: center;"><div>right-thigh</div><svg viewBox="30 10 40 70"><path d="M50 10 C40 10 35 20 40 30 L50 80 L60 80 L60 30 C65 20 60 10 50 10 Z" /></svg></div>
+<div style="text-align: center;"><div>left-lower-leg</div><svg viewBox="30 80 40 100"><path d="M40 80 L50 80 L50 180 L30 180 L30 170 L40 170 Z" /></svg></div>
+<div style="text-align: center;"><div>right-lower-leg</div><svg viewBox="30 80 40 100"><path d="M50 80 L60 80 L60 170 L70 170 L70 180 L50 180 Z" /></svg></div>
+</div>
+<div class="board">
+<svg viewBox="15 5 70 75" style="top: 100px; left: 150px; width: 70px; height: 75px;"><path fill-rule="evenodd" d="M50 5 C30 5 15 25 15 45 C15 65 25 75 35 80 L65 80 C75 75 85 65 85 45 C85 25 70 5 50 5 Z M30 40 A8 8 0 1 0 30 56 A8 8 0 1 0 30 40 Z M70 40 A8 8 0 1 0 70 56 A8 8 0 1 0 70 40 Z M50 60 L45 70 H55 Z" /></svg>
+<svg viewBox="35 80 30 20" style="top: 175px; left: 150px; width: 30px; height: 20px;"><path d="M35 80 C40 85 60 85 65 80 L65 95 C60 100 40 100 35 95 Z" /></svg>
+<svg viewBox="0 0 50 20" style="top: 200px; left: 115px; width: 50px; height: 20px;"><path d="M45 10 C30 5 15 15 5 10 C15 5 30 0 45 5 Z" /></svg>
+<svg viewBox="50 0 50 20" style="top: 200px; left: 165px; width: 50px; height: 20px;"><path d="M55 10 C70 5 85 15 95 10 C85 5 70 0 55 5 Z" /></svg>
+<svg viewBox="15 10 70 90" style="top: 210px; left: 150px; width: 70px; height: 90px;"><path d="M45 10 H55 V100 H45 Z M45 20 C20 15 15 35 45 40 V35 C20 30 25 20 45 25 Z M55 20 C80 15 85 35 55 40 V35 C80 30 75 20 55 25 Z M45 45 C20 40 15 60 45 65 V60 C20 55 25 45 45 50 Z M55 45 C80 40 85 60 55 65 V60 C80 55 75 45 55 50 Z M45 70 C20 65 15 85 45 90 V85 C20 80 25 70 45 75 Z M55 70 C80 65 85 85 55 90 V85 C80 80 75 70 55 75 Z" /></svg>
+<svg viewBox="5 10 90 65" style="top: 300px; left: 140px; width: 90px; height: 65px;"><path fill-rule="evenodd" d="M10 10 Q50 30 90 10 Q100 40 80 55 L65 75 L50 60 L35 75 L20 55 Q0 40 10 10 Z M25 45 A5 5 0 1 0 25 55 A5 5 0 1 0 25 45 Z M75 45 A5 5 0 1 0 75 55 A5 5 0 1 0 75 45 Z" /></svg>
+<svg viewBox="40 10 35 90" style="top: 210px; left: 115px; width: 35px; height: 90px;"><path d="M60 10 C70 10 75 20 65 30 L50 60 L50 100 L40 100 L40 60 L55 30 C45 20 50 10 60 10 Z" /></svg>
+<svg viewBox="25 10 35 90" style="top: 210px; left: 220px; width: 35px; height: 90px;"><path d="M40 10 C30 10 25 20 35 30 L50 60 L50 100 L60 100 L60 60 L45 30 C55 20 50 10 40 10 Z" /></svg>
+<svg viewBox="30 10 40 70" style="top: 355px; left: 140px; width: 40px; height: 70px;"><path d="M50 10 C60 10 65 20 60 30 L50 80 L40 80 L40 30 C35 20 40 10 50 10 Z" /></svg>
+<svg viewBox="30 10 40 70" style="top: 355px; left: 190px; width: 40px; height: 70px;"><path d="M50 10 C40 10 35 20 40 30 L50 80 L60 80 L60 30 C65 20 60 10 50 10 Z" /></svg>
+<svg viewBox="30 80 40 100" style="top: 425px; left: 140px; width: 40px; height: 100px;"><path d="M40 80 L50 80 L50 180 L30 180 L30 170 L40 170 Z" /></svg>
+<svg viewBox="30 80 40 100" style="top: 425px; left: 190px; width: 40px; height: 100px;"><path d="M50 80 L60 80 L60 170 L70 170 L70 180 L50 180 Z" /></svg>
+</div></body></html>
